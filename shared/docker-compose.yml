@@ -1,0 +1,9 @@
+version: "3.5"
+services:
+  shared:
+    build: "."
+    image: "${APP_NAME}:latest"
+    env_file: "./.env"
+    container_name: "shared"
+    volumes:
+      - "./dist:/app/dist"
