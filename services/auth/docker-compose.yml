@@ -1,0 +1,17 @@
+version: "3.5"
+services:
+  app:
+    build: "."
+    image: "${APP_NAME}:latest"
+    env_file: "./.env"
+    container_name: "${APP_NAME}"
+    restart: "unless-stopped"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "3"
+    ports:
+      - "${APP_PORT}:8000"
+    volumes:
+      - "~${DOCKER_SHARED_VOLUME_PATH}${APP_NAME}:${DOCKER_SHARED_VOLUME_PATH}"

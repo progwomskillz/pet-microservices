@@ -8,7 +8,7 @@ up_containers: build_containers
 	docker compose up -d
 
 setup_tests: up_containers
-	docker exec -it shared pip install -r tests_requirements.txt --no-cache-dir
+	docker exec -it shared pip install -r requirements.tests.txt --no-cache-dir
 
 unit_tests: setup_tests
 	docker exec -it shared pytest -s --cov-report term-missing --cov=. ./tests/unit/
